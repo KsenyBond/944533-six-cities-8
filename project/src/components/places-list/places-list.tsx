@@ -4,9 +4,9 @@ type PlacesListProps = {
   placesCount: number;
 }
 
-function PlacesList({placesCount}: PlacesListProps): JSX.Element {
-  const PLACES_ON_PAGE = 5;
+const PLACES_ON_PAGE = 5;
 
+function PlacesList({placesCount}: PlacesListProps): JSX.Element {
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">

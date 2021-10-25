@@ -1,4 +1,6 @@
+import Logo from '../logo/logo';
 import PlacesList from '../places-list/places-list';
+import PlacesListEmpty from '../places-list-empty/places-list-empty';
 
 type MainScreenProps = {
   placesCount: number;
@@ -11,9 +13,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"  />
-              </a>
+              <Logo isActive />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -74,7 +74,7 @@ function MainScreen({placesCount}: MainScreenProps): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          <PlacesList placesCount={placesCount} />
+          {placesCount? <PlacesList placesCount={placesCount} /> : <PlacesListEmpty />}
         </div>
       </main>
     </div>
