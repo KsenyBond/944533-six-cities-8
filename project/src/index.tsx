@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-
-const Setting = {
-  PLACES_COUNT: 312,
-};
+import {offers} from './mocks/offers';
+// import {comments} from './mocks/comments';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App placesCount={Setting.PLACES_COUNT} />
+    <App
+      offers={offers}
+      // comments={comments}
+    />
   </React.StrictMode>,
   document.getElementById('root'));

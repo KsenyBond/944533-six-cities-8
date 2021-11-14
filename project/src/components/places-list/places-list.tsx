@@ -1,17 +1,27 @@
+import {useState} from 'react';
 import PlaceCard from '../place-card/place-card';
+import {Offer} from '../../types/offer';
 
 type PlacesListProps = {
-  placesCount: number;
+  offers: Offer[],
 }
 
-const PLACES_ON_PAGE = 5;
+function PlacesList({offers}: PlacesListProps): JSX.Element {
+  const [activeOfferId, setActiveOfferId] = useState(0);
 
-function PlacesList({placesCount}: PlacesListProps): JSX.Element {
+  const handleActiveOffer = (id: number): void => {
+    setActiveOfferId(id);
+  };
+
+  /* eslint-disable no-console */
+  console.log(activeOfferId); // temp
+  /* eslint-enable no-console */
+
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
-        <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+        <b className="places__found">{offers.length} places to stay in Paris</b>
         <form className="places__sorting" action="#" method="get">
           <span className="places__sorting-caption">Sort by</span>
           <span className="places__sorting-type" tabIndex={0}>
@@ -28,7 +38,13 @@ function PlacesList({placesCount}: PlacesListProps): JSX.Element {
           </ul>
         </form>
         <div className="cities__places-list places__list tabs__content">
-          {[...Array(PLACES_ON_PAGE)].map((el, index) => <PlaceCard key={Math.random()}/>)}
+          {offers.map((offer) => (
+            <PlaceCard
+              key={offer.id}
+              offer={offer}
+              onActiveHandler={handleActiveOffer}
+            />
+          ))}
         </div>
       </section>
       <div className="cities__right-section">

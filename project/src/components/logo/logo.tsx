@@ -1,14 +1,15 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import {AppRoute} from '../const';
 
 type LogoProps = {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
-function Logo({isActive}: LogoProps): JSX.Element {
+function Logo({isActive = false}: LogoProps): JSX.Element {
   return (
-    <Link className={`${'header__logo-link'} ${isActive && 'header__logo-link--active'}`} to='/'>
+    <NavLink className="header__logo-link" activeClassName={isActive ? 'header__logo-link--active' : ''} to={AppRoute.Main}>
       <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"  />
-    </Link>
+    </NavLink>
   );
 }
 

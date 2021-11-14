@@ -1,11 +1,27 @@
-import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
+import {Offer} from '../../types/offer';
+import FavoriteLocation from '../favorite-location/favorite-location';
 
-function FavoritePlacesList(): JSX.Element {
+type FavoritePlacesListProps = {
+  offers: Offer[],
+}
+
+function FavoriteLocationsList({offers}: FavoritePlacesListProps): JSX.Element {
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+  favoriteOffers.sort((a, b) => a.city.name.localeCompare((b.city.name)));
+
   return (
-    <div className="favorites__places">
-      <FavoritePlaceCard />
-    </div>
+    <section className="favorites">
+      <h1 className="favorites__title">Saved listing</h1>
+      <ul className="favorites__list">
+        {favoriteOffers.map((offer) => (
+          <FavoriteLocation
+            key={offer.id}
+            offer={offer}
+          />
+        ))}
+      </ul>
+    </section>
   );
 }
 
-export default FavoritePlacesList;
+export default FavoriteLocationsList;

@@ -2,7 +2,7 @@ import {Route, Redirect} from 'react-router-dom';
 import {RouteProps} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../const';
 
-type PrivateRouteProps = RouteProps & {
+type PrivateRouteProps = Pick<RouteProps, 'exact' | 'path' | 'render'> & {
   render: () => JSX.Element;
   authorizationStatus: AuthorizationStatus;
 }

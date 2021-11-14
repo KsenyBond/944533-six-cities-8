@@ -5,7 +5,7 @@ function NotFoundScreen(): JSX.Element {
   return (
     <div className="page">
       <header className="header">
-        <Logo isActive={false} />
+        <Logo />
       </header>
 
       <main className="page__not-found">
