@@ -7,7 +7,7 @@ type PlacesListProps = {
 }
 
 function PlacesList({offers}: PlacesListProps): JSX.Element {
-  const [activeOfferId, setActiveOfferId] = useState(0);
+  const [activeOfferId, setActiveOfferId] = useState<number | null>(null);
 
   const handleActiveOffer = (id: number): void => {
     setActiveOfferId(id);

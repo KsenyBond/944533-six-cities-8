@@ -1,17 +1,16 @@
-import {Comment} from '../types/offer';
-
 const AVATAR_URL = 'https://i.pravatar.cc/128';
 
-export const comments: Comment[] = [
+/* eslint-disable */
+export const comments = [
   {
     comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     date: '2019-05-08T14:13:56.569Z',
     id: 1,
     rating: 4,
     user: {
-      avatarUrl: 'img/1.png',
+      avatar_url: 'img/1.png',
       id: 4,
-      isPro: false,
+      is_pro: false,
       name: 'Max',
     },
   },
@@ -21,9 +20,9 @@ export const comments: Comment[] = [
     id: 2,
     rating: 4,
     user: {
-      avatarUrl: `${AVATAR_URL}?rnd=${Math.random()}`,
+      avatar_url: `${AVATAR_URL}?rnd=${Math.random()}`,
       id: 2,
-      isPro: false,
+      is_pro: false,
       name: 'Ben',
     },
   },
@@ -34,9 +33,9 @@ export const comments: Comment[] = [
     id: 3,
     rating: 5,
     user: {
-      avatarUrl: `${AVATAR_URL}?rnd=${Math.random()}`,
+      avatar_url: `${AVATAR_URL}?rnd=${Math.random()}`,
       id: 3,
-      isPro: false,
+      is_pro: false,
       name: 'Nick',
     },
   },
@@ -46,9 +45,9 @@ export const comments: Comment[] = [
     id: 4,
     rating: 4,
     user: {
-      avatarUrl: `${AVATAR_URL}?rnd=${Math.random()}`,
+      avatar_url: `${AVATAR_URL}?rnd=${Math.random()}`,
       id: 4,
-      isPro: false,
+      is_pro: false,
       name: 'Gregory',
     },
   },

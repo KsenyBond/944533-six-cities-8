@@ -7,7 +7,6 @@ type FavoritePlacesListProps = {
 
 function FavoriteLocationsList({offers}: FavoritePlacesListProps): JSX.Element {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  favoriteOffers.sort((a, b) => a.city.name.localeCompare((b.city.name)));
 
   return (
     <section className="favorites">

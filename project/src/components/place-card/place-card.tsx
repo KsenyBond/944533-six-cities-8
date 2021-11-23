@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../const';
 import {Offer} from '../../types/offer';
+import {convertToPercent} from '../../utils/utils';
 
 type PlaceCardProps = {
   offer: Offer,
@@ -20,7 +21,7 @@ function PlaceCard({offer, onActiveHandler}: PlaceCardProps): JSX.Element {
     id,
   } = offer;
 
-  const ratingPercent = rating * 100 / MAX_RATING;
+  const ratingPercent = convertToPercent(rating, MAX_RATING);
 
   return (
     <article
@@ -28,10 +29,11 @@ function PlaceCard({offer, onActiveHandler}: PlaceCardProps): JSX.Element {
       onMouseEnter={()=>{onActiveHandler(id);}}
       onMouseLeave={()=>{onActiveHandler(0);}}
     >
-      {isPremium &&
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>}
+      {isPremium && (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Room}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />

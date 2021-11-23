@@ -15,7 +15,7 @@ function MainScreen({offers}: MainScreenProps): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo isActive />
+              <Logo isMain />
             </div>
             <HeaderNav />
           </div>
@@ -61,7 +61,7 @@ function MainScreen({offers}: MainScreenProps): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          {offers.length? <PlacesList offers={offers} /> : <PlacesListEmpty />}
+          {offers.length ? <PlacesList offers={offers} /> : <PlacesListEmpty />}
         </div>
       </main>
     </div>
