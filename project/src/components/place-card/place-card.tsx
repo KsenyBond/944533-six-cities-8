@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../const';
+import {AppRoute, MAX_RATING} from '../const';
 import {Offer} from '../../types/offer';
 import {convertToPercent} from '../../utils/utils';
 
@@ -7,8 +7,6 @@ type PlaceCardProps = {
   offer: Offer,
   onActiveHandler: (id: number) => void;
 }
-
-const MAX_RATING = 5;
 
 function PlaceCard({offer, onActiveHandler}: PlaceCardProps): JSX.Element {
   const {

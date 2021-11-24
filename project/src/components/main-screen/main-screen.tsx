@@ -2,13 +2,30 @@ import Logo from '../logo/logo';
 import HeaderNav from '../header-nav/header-nav';
 import PlacesList from '../places-list/places-list';
 import PlacesListEmpty from '../places-list-empty/places-list-empty';
-import {Offer} from '../../types/offer';
+import Map from '../map/map';
+import {Offer, Point} from '../../types/offer';
+import clsx from 'clsx';
+import {useState} from 'react';
 
 type MainScreenProps = {
   offers: Offer[],
 }
 
 function MainScreen({offers}: MainScreenProps): JSX.Element {
+  const points = offers.map((offer) => {
+    const {id, location} = offer;
+    return {id, location};
+  });
+
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
+
+  const handleActiveOffer = (id: number): void => {
+    const currentPoint = points.find((point) =>
+      point.id === id,
+    );
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -61,7 +78,12 @@ function MainScreen({offers}: MainScreenProps): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          {offers.length ? <PlacesList offers={offers} /> : <PlacesListEmpty />}
+          <div className={clsx('cities__places-container container', !offers.length && 'cities__places-container--empty')}>
+            {offers.length ? <PlacesList offers={offers} onActiveHandler={handleActiveOffer} /> : <PlacesListEmpty />}
+            <div className="cities__right-section">
+              <Map city={offers[0].city} points={points} selectedPoint={selectedPoint} />
+            </div>
+          </div>
         </div>
       </main>
     </div>
